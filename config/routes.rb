@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   get "about"=>"home#about"
   get "posts/index"=>"posts#index"
   get "posts/new"=>"posts#new"
+  post "posts/create"=>"posts#create"
+  get "posts/:id"=>"posts#show"
+  get "posts/:id/edit"=>"posts#edit"
+  post "posts/:id/update"=>"posts#update"
   get "users/index"=>"users#index"
   get "users/signup"=>"users#new"
 
