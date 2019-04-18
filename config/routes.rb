@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get "about"=>"home#about"
   get "posts/index"=>"posts#index"
   get "posts/new"=>"posts#new"
-  get "users/index"=>"users#index"
+  get "users"=>"users#index"
   get "users/signup"=>"users#new"
 
+  resources :users
 end
