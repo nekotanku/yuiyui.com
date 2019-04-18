@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
-  get 'users/new'
-  get 'users/create'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/destroy'
-  get 'signup', to: 'users#new'
-  
+
+  get '/'=>"home#top"
+  get "about"=>"home#about"
+  get "posts/index"=>"posts#index"
+  get "posts/new"=>"posts#new"
+  get "users/index"=>"users#index"
+  get "users/signup"=>"users#new"
+
 end
