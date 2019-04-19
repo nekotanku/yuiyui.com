@@ -1,2 +1,9 @@
-<h1>yuiyui.com</h1>
-<p></p>
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<% else %>
+  <div class="text-center">
+    <h1>yuiyui.com</h1>
+    <p>ゆいちゃん大好き</p>
+    <%= link_to 'こちらから利用できます', users_signup_path, class: 'btn btn-lg btn-primary' %>
+  </div>
+<% end %>
