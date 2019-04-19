@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    
     <header>
       <div class="header-logo">
         <%= link_to("yuiyui.com","/") %>
@@ -43,6 +44,12 @@
         <% end %>
       </ul>
     </header>
+    <% if flash[:notine]%>
+     <div class="flash">
+       <%= flash[:notice]%>
+     </div>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
