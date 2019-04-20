@@ -3,8 +3,18 @@
   <div class= "post-item">
     <%= @post.created_at %>
   </div>
-  
-  <%=link_to("編集","/posts/#{@post.id}/edit") %>
-  <%=link_to("削除","/posts/#{@post.id}/destroy",{method:"post"}) %>
-  
+　<div class="post-user-name">
+　  <%= link_to(@user.name,"users/#{@user.id}") %>
+　  
+　</div>
+　<% if @post.user == current_user %>
+  <div>
+    
+    <%=link_to "編集",edit_post_path %>
+  </div>
+  <div>
+    <%=link_to "削除",@post,method: :delete,data:{confirm:"You sure?"},
+      class:'btn btn-danger btn-xs' %>
+  </div>
+  <% end %>  
 </div>
