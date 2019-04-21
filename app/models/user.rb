@@ -9,4 +9,7 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   
+  def posts
+    return Post.where(user_id: self.id)
+  end
 end
