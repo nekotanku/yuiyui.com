@@ -16,7 +16,13 @@
       </div>
       <ul class="header-menus">
         <li>
-            <%= link_to("yiuyui.comとは", "/about") %>
+          <%= link_to("yiuyui.comとは", "/about") %>
+        </li>
+        <li>
+          <%= link_to("ユーザー一覧","/users")%>
+        </li>
+        <li>
+          <%= link_to("投稿一覧", "/posts/index") %>
         </li>
         <% if logged_in? %>
           <li>
@@ -30,13 +36,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to("投稿一覧", "/posts/index") %>
-          </li>
-          <li>
             <%= link_to 'ログイン', login_path %>
-          </li>
-          <li>
-            <%= link_to("ユーザー一覧","/users")%>
           </li>
           <li>
             <%= link_to("新規登録","/users/signup")%>
