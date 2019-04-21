@@ -4,7 +4,7 @@
     <%= @post.created_at %>
   </div>
 　<div class="post-user-name">
-　  <%= link_to(@user.name,"users/#{@user.id}") %>
+　  <%= link_to(@user.name,user_path) %>
 　  
 　</div>
 　<% if @post.user == current_user %>
