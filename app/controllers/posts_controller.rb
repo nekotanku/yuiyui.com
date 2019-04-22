@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(content: params[:content],user_id: @current_user.id)
     if @post.save
       flash[:notice]="投稿しました"
-      redirect_to posts_index_path
+      redirect_to posts_path
       
     else
       render new_post_path
@@ -33,6 +33,7 @@ class PostsController < ApplicationController
       flash[:notice] ="投稿を編集しました"
       redirect_to posts_path
     else
+      flash[:notice] ="投稿を編集できませんでした"
       render edit_post_path
       
     end

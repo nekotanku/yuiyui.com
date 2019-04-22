@@ -1,5 +1,5 @@
 
-<%= form_tag("/posts/create") do %>
+<%= form_tag(@post) do %>
   <textarea name="content"><%= @post.content %></textarea>
   <input type="submit" value="投稿">
 <% end %>
