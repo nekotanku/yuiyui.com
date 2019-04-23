@@ -5,7 +5,20 @@
         <h3 class="panel-title"><%= @user.name %></h3>
       </div>
     </div>
+
     <%= render "relationships/follow_button", user: @user %>
+
+    <% unless @user.introduce.nil? %>
+      <div class="profile-introduce">
+        <%= @user.introduce %>
+      </div>
+    <% end %>
+    <% if @user == current_user %>
+      <div>
+        <%= link_to "ユーザ編集", edit_user_path(current_user) %>
+      </div>
+    <% end %>
+
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs">

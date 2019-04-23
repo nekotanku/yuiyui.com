@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show, :followings, :followers]
+
+  
+
+  before_action :require_user_logged_in, only: [:show, :edit, :update, :destroy, :followings, :followers]
+
   
   def index
     @users = User.all
@@ -24,12 +28,23 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to user_path
+    else
+      render 'edit'
+    end
+      
   end
 
   def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "ご利用ありがとうございました"
+    redirect_to users_path
   end
   
   def followings
@@ -47,7 +62,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduce)
   end
   
 end

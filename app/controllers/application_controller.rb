@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   
   def require_user_logged_in
     unless logged_in?
+      flash[:danger] = "ログインをすれば利用できます"
       redirect_to login_path
     end
   end
