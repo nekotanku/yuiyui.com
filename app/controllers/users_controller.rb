@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show]
+  before_action :require_user_logged_in, only: [:show, :followings, :followers]
   
   def index
     @users = User.all
@@ -32,9 +32,22 @@ class UsersController < ApplicationController
   def destroy
   end
   
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings
+    
+  end
+  
+  def followers
+    @user= User.find(params[:id])
+    @followers = @user.followers
+    
+  end
+  
   private
   
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+  
 end
