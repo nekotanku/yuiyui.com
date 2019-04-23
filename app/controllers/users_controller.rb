@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show]
+  before_action :require_user_logged_in, only: [:show, :edit, :update, :destroy]
   
   def index
     @users = User.all
@@ -38,6 +38,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "ご利用ありがとうございました"
+    redirect_to users_path
   end
   
   private
