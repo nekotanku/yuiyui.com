@@ -5,6 +5,9 @@
         <h3 class="panel-title"><%= @user.name %></h3>
       </div>
     </div>
+    <div>
+      <%= link_to "ユーザ編集", edit_user_path(current_user) %>
+    </div>
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs">
