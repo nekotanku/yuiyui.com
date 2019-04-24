@@ -1,15 +1,17 @@
 <div class= "posts-show-item">
   <%= @post.content %>
+  
   <div class= "post-item">
     <%= @post.created_at %>
   </div>
 　<div class="post-user-name">
 　  <%= link_to(@user.name, user_path(@user)) %>
-　  
 　</div>
+　<div class= "post-likes"
+    <%= render "likes/like_button", post: @post %>
+  </div>
 　<% if @post.user == current_user %>
   <div>
-    
     <%=link_to "編集",edit_post_path %>
   </div>
   <div>
