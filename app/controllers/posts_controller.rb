@@ -1,15 +1,15 @@
 class PostsController < ApplicationController
   before_action :ensure_current_user, only: [:edit, :update, :destroy]
-  
+  before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy,]
+
   def index
     @posts=Post.all.order(created_at: :desc)
   end
   def create
-    @post = current_user.posts.new(content: params[:content],user_id: @current_user.id)
+    @post = current_user.posts.new(post_params)
     if @post.save
       flash[:notice]="投稿しました"
       redirect_to posts_path
-      
     else
       render new_post_path
     end
@@ -44,11 +44,18 @@ class PostsController < ApplicationController
     flash[:notice]="削除しました"
     redirect_to posts_path
   end
+  
+  private
+  
+  
   def ensure_current_user
-    
     @post= current_user.posts.find_by(id: params[:id])
     unless @post
       redirect_to posts_path
     end
-  end  
+  end 
+  
+  def post_params
+    params.require(:post).permit(:content, :picture)
+  end
 end

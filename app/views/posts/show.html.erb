@@ -1,6 +1,6 @@
 <div class= "posts-show-item">
   <%= @post.content %>
-  
+  <%= image_tag @post.picture.url if @post.picture? %>
   <div class= "post-item">
     <%= @post.created_at %>
   </div>

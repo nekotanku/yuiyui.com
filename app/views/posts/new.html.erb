@@ -1,6 +1,10 @@
 
-<%= form_tag(@post) do %>
-  <textarea name="content"><%= @post.content %></textarea>
-  <input type="submit" value="投稿">
+<%= form_for(@post) do |f| %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+  <span class="picture">
+    <%= f.file_field :picture %>
+  </span>
 <% end %>
-
