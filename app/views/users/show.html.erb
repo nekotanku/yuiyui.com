@@ -4,6 +4,7 @@
       <div class="panel-heading">
         <h3 class="panel-title"><%= @user.name %></h3>
       </div>
+      <%= image_tag @user.image.thumb.url %>
     </div>
 
     <%= render "relationships/follow_button", user: @user %>

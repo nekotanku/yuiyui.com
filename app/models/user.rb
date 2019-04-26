@@ -12,7 +12,7 @@ class User < ApplicationRecord
   def posts
     return Post.where(user_id: self.id)
   end
-  
+  mount_uploader :image, ImageUploader
   has_many :microposts
   has_many :likes, dependent: :destroy
   has_many :relationships
