@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
   validates :content, {presence: true, length: {maximum: 140}}
   validates :user_id,{presence: true}
-  mount_uploader :picture, PictureUploader
+  mount_uploaders :picture, PictureUploader
+  serialize :picture, JSON
   def user
     return User.find_by(id: self.user_id)
   end
