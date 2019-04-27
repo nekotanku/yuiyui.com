@@ -1,6 +1,12 @@
 <div class= "posts-show-item">
   <%= @post.content %>
-  <%= image_tag @post.picture.url if @post.picture? %>
+  
+  <% if @post.picture? %>
+    <% @post.picture.each do |picture| %>
+      <%= image_tag picture.url %>
+    <% end %>
+  <% end %>
+  
   <div class= "post-item">
     <%= @post.created_at %>
   </div>
