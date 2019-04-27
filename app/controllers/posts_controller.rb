@@ -28,8 +28,7 @@ class PostsController < ApplicationController
   end
   def update
     @post= Post.find_by(id: params[:id])
-    @post.content=params[:content]
-    if @post.save
+    if @post.update(post_params)
       flash[:notice] ="投稿を編集しました"
       redirect_to posts_path
     else
