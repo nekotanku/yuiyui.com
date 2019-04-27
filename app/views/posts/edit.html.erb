@@ -1,3 +1,8 @@
+<% if @post.picture? %>
+  <% @post.picture.each do |picture| %>
+    <%= image_tag picture.url %>
+  <% end %>
+<% end %>
 
 <%= form_for(@post) do |f| %>
   <div class="field">
@@ -6,7 +11,7 @@
   <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="picture">
     <%= f.file_field :picture, :multiple => true, accept: 'image/jpeg,image/gif,image/png' %>
-    <%= f.file_field :picture, :multiple => true, accept: 'image/jpeg,image/gif,image/png' %>
+    <p>画像を複数選択し、アップロードできます。</p>
     <p>画像は5MB以下のサイズのみ対応しています。</p>
   </span>
 <% end %>
