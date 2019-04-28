@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   end
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
-  
+  has_many :comments, dependent: :delete_all
   def like(user)
     likes.create(user_id: user.id)
   end
@@ -20,4 +20,5 @@ class Post < ApplicationRecord
   def like?(user)
     like_users.include?(user)
   end
+  
 end
