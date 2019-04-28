@@ -1,10 +1,18 @@
- <% @posts.each do |post| %>
-   <div class="posts-index-item">
-     <%= link_to(post.content, post_path(post))%>
-   </div>
-   <% if post.picture? %>
-    <% post.picture.each do |picture| %>
+<%= form_tag posts_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %> 
+
+<% @posts.each do |post| %>
+  <div class="posts-index-item">
+    <%= link_to(post.content, post_path(post))%>
+  </div>
+  <% if post.picture? %>
+   <% post.picture.each do |picture| %>
       <%= image_tag picture.thumb.url %>
-    <% end %>
    <% end %>
- <% end %>
+  <% end %>
+<% end %>
+<p>content serch</p>

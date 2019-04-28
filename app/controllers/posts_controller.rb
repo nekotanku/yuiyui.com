@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy,]
 
   def index
-    @posts=Post.all.order(created_at: :desc)
+    @posts=Post.search(params[:search]).order(created_at: :desc)
   end
   def create
     @post = current_user.posts.new(post_params)

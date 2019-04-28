@@ -6,6 +6,13 @@ class Post < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
+  def self.search(search)
+    if search
+      where(['content LIKE ?', "%#{search}%"])
+    else
+      all
+    end
+  end
   
   def user
     return User.find_by(id: self.user_id)
