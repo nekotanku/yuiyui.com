@@ -3,11 +3,13 @@ class Post < ApplicationRecord
   validates :user_id,{presence: true}
   mount_uploaders :picture, PictureUploader
   serialize :picture, JSON
+
+  has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
+  
   def user
     return User.find_by(id: self.user_id)
   end
-  has_many :likes, dependent: :destroy
-  has_many :like_users, through: :likes, source: :user
   has_many :comments, dependent: :delete_all
   def like(user)
     likes.create(user_id: user.id)

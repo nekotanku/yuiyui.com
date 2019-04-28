@@ -5,7 +5,8 @@
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
   <span class="picture">
-    <%= f.file_field :picture, :multiple => true %>
-    <%= f.file_field :picture, :multiple => true %>
+    <%= f.file_field :picture, :multiple => true, accept: 'image/jpeg,image/gif,image/png' %>
+    <p>画像を複数選択し、アップロードできます。</p>
+    <p>画像は5MB以下のサイズのみ対応しています。</p>
   </span>
 <% end %>
