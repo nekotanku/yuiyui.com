@@ -1,1 +1,11 @@
-<%= render 'users', users: @users %>
+<h1>All users</h1>
+
+<p>user search</p>
+<%= form_tag(users_path, :method => 'get' ) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+
+<ul class="users">
+  <%= render @users %>
+</ul>

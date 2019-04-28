@@ -9,6 +9,15 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   validates :introduce, length: { maximum: 200 }
+  
+  def self.search(search)
+    if search
+      where(['name LIKE ?', "%#{search}%"])
+    else
+      all
+    end
+  end
+  
   def posts
     return Post.where(user_id: self.id)
   end

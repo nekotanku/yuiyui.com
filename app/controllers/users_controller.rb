@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   
   def index
-    @users = User.all
+    @users = User.search(params[:search])
   end
 
   def show
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduce, :image, :remove_image)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduce)
   end
   
 end
