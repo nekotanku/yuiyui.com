@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   def user
     return User.find_by(id: self.user_id)
   end
-
+  has_many :comments, dependent: :delete_all
   def like(user)
     likes.create(user_id: user.id)
   end
@@ -22,4 +22,5 @@ class Post < ApplicationRecord
   def like?(user)
     like_users.include?(user)
   end
+  
 end
