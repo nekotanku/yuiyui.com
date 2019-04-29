@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "about"=>"home#about"
   
   get "users/signup"=>"users#new"
-  resources :users, only: [:index, :show, :new, :create] do
+  resources :users do
     member do
       get :followings
       get :followers
