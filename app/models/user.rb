@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   before_save { self.email.downcase! }
   has_secure_password
-  
   validates :name, presence: true,
                    length: { in: 3..20 }, 
                    uniqueness: { case_sensitive: false }
@@ -9,6 +8,13 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   validates :introduce, length: { maximum: 200 }
+  
+  has_many :posts
+  has_many :likes, dependent: :destroy
+  has_many :relationships
+  has_many :followings, through: :relationships, source: :follow
+  has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverses_of_relationship,  source: :user
   
   def self.search(search)
     if search
@@ -21,12 +27,6 @@ class User < ApplicationRecord
   def posts
     return Post.where(user_id: self.id)
   end
-  has_many :microposts
-  has_many :likes, dependent: :destroy
-  has_many :relationships
-  has_many :followings, through: :relationships, source: :follow
-  has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
-  has_many :followers, through: :reverses_of_relationship,  source: :user
   
   def follow(other_user)
     unless self == other_user
