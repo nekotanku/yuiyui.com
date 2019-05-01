@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
   given(:user) { FactoryBot.create(:yuri) }
-    
+  given(:other_user){ FactoryBot.create(:taro) }
+  
   scenario '新しいユーザーを作成できること' do
     visit "/"
     click_link "新規登録"
@@ -31,6 +32,14 @@ RSpec.feature "Users", type: :feature do
       click_link "退会する"
     }.to change(User, :count).by(-1)
     expect(page).to have_current_path "/users"
+  end
+  
+  scenario 'ユーザを検索できること' do
+    visit users_path
+    fill_in 'search', with: user.name
+    click_on "Search"
+    expect(page).to have_content user.name
+    expect(page).to_not have_content other_user.name
   end
   
   def login
