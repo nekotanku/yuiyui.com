@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
-  has_many :comments, dependent: :delete_all
+  has_many :comments
   
   def self.search(search)
     if search
@@ -32,5 +32,8 @@ class Post < ApplicationRecord
   def like?(user)
     like_users.include?(user)
   end
-  
+  def comment(user)
+    comments.create(user_id: user.id)
+  end
+    
 end
