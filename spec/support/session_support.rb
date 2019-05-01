@@ -1,6 +1,6 @@
-module LoginSupport
+module SessionSupport
   def sign_in_as(user)
-    visit root_path
+    visit login_path
     click_link "ログイン"
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
@@ -9,5 +9,5 @@ module LoginSupport
 end
 
 RSpec.configure do |config|
-    config.include LoginSupport
+  config.include SessionSupport
 end

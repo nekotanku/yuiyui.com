@@ -48,6 +48,10 @@ group :development, :test do
   gem "factory_bot_rails", "~> 4.10.0"
 end
 
+group :test do
+  gem 'capybara', '>= 2.15'
+end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
