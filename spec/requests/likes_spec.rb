@@ -8,7 +8,6 @@ RSpec.describe "Likes", type: :request do
       @like_params = FactoryBot.attributes_for(:like)
     end
     it 'ログインしていないユーザーは「いいね」出来ないこと' do
-      login_user @user
       post likes_path(@post, @user.likes.build), params: @like_params
       expect(response).to redirect_to login_url
     end
