@@ -9,9 +9,9 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :introduce, length: { maximum: 200 }
   
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :relationships
+  has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follow
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverses_of_relationship,  source: :user
