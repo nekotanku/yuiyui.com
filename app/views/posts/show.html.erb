@@ -1,54 +1,55 @@
+
+<div class="row">
+  <aside class="col-xs-6">
+    <div class="col-md-6">col-md-6</div>
+    <div class="col-md-6">col-md-6</div>
+<table class="table table-bordered">
 <div class= "posts-show-item">
-  <%= @post.content %>
-  
-  <% if @post.picture? %>
-    <% @post.picture.each do |picture| %>
-      <%= image_tag picture.url %>
+  <tr>
+    <th>メッセージ</th>
+    <td><%= @post.content %></td>
+  </tr>
+  <tr>
+    <th>画像</th>
+    <% if @post.picture? %>
+      <% @post.picture.each do |picture| %>
+        <td><%= image_tag picture.url %></td>
+      <% end %>
     <% end %>
-  <% end %>
-  
+  </tr>
   <div class= "post-item">
     <%= @post.created_at %>
   </div>
 　<div class="post-user-name">
 　  <%= link_to(@user.name, user_path(@user)) %>
 　</div>
-　<h2>コメント</h2>
 　
-　  <% @post.comments.each do |comment| %>
-　    <p>
-　      <%= comment.commenter %>: <%= comment.body %>
-　      <% if @post.user == current_user %>
-　        <%= link_to '削除', [comment.post, comment],method: :delete %>
-　      <% end %>
-　    </p>
-　  <% end %>
-　<h2>コメントを書く</h2>
-　<h4>※コメントは自分では消せません！</h4>
-　<%= form_for([@post, @post.comments.build]) do |f| %>
-　  <div class="field">
-      <%= f.label :commenter %><br>
-      <%= f.text_field :commenter %>
-    </div>
-    <div class="field">
-      <%= f.label :body %><br>
-      <%= f.text_area :body %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
+　<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <div>
+    <a href="/users/<%= @post.user.id %>"></a>
+    <%= c.content %>
+    <hr>
+  </div>
+<% end %>
+
+  <div class= "comments">
+    <%= render "comments/comment_form", post: @post %>
+  </div>
+  
+
 　<div class= "post-likes"
     <%= render "likes/like_button", post: @post %>
   </div>
-　  
+</table>　  
 　<% if @post.user == current_user %>
   <div>
-    <%=link_to "編集",edit_post_path %>
+    <%=link_to "編集",edit_post_path, class: 'btn btn-default'%>
   </div>
   <div>
-    <%=link_to "削除",@post,method: :delete,data:{confirm:"You sure?"},
-      class:'btn btn-danger btn-xs' %>
+    <%=link_to "削除",@post,method: :delete,data:{confirm:'本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
   </div>
   <% end %>  
+</div>
+  </div>
 </div>

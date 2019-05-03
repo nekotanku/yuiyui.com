@@ -1,8 +1,12 @@
- .header-logo{
+ 
+
+
+ .header-logo{ 
    font-size: 20px;
    float: left;
    padding-right: 20px;
    background-color: #FFCCFF;
+   margin: 10px;
  }
  
  li{
@@ -10,9 +14,13 @@
    float: left;
    padding-left: 10px;
    padding-right: 10px;
+   
  }
 header {
   height: 50px;
   width: 100%;
-  background-color: #FFCCFF	
+  background-color: #FFCCFF;
+  
 }
+
+
