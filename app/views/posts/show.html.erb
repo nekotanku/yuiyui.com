@@ -1,5 +1,8 @@
-<h1>id = <%= @post.id %> のメッセージ詳細ページ</h1>
 
+<div class="row">
+  <aside class="col-xs-6">
+    <div class="col-md-6">col-md-6</div>
+    <div class="col-md-6">col-md-6</div>
 <table class="table table-bordered">
 <div class= "posts-show-item">
   <tr>
@@ -30,7 +33,7 @@
   </div>
 <% end %>
 
-  <div class= "comments"
+  <div class= "comments">
     <%= render "comments/comment_form", post: @post %>
   </div>
   
@@ -47,4 +50,6 @@
     <%=link_to "削除",@post,method: :delete,data:{confirm:'本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
   </div>
   <% end %>  
+</div>
+  </div>
 </div>

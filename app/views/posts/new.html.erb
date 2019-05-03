@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-md-6 col-md-offset-3">
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div class="alert alert-warning">
@@ -12,8 +12,9 @@
       </div>
     </div>
   <% end %>
+  <h1>投稿</h1>
   <div class="form-group">
-    <%= f.label :content, '投稿' %>
+    
     <%= f.text_area :content, class: 'form-control' %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
