@@ -97,4 +97,11 @@ RSpec.describe User, type: :model do
       expect(user.followings). to_not include(user)
     end
   end
+  
+  describe 'authenticated?のテスト' do
+    let!(:user) { FactoryBot.create(:yuri) }
+    it 'remember_digestが存在しなければ無効であること' do
+      expect(user.authenticated?(remember_token: '')).to eq false
+    end
+  end
 end
