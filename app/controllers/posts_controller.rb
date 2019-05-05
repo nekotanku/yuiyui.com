@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts=Post.search(params[:search]).order(created_at: :desc)
+    
   end
   def create
     @post = current_user.posts.new(post_params)
