@@ -8,6 +8,11 @@ class SessionsController < ApplicationController
     password = params[:session][:password]
     if login(email, password)
       flash[:success] = 'ログインに成功しました。'
+      if params[:session][:remember_me] == '1'
+        remember(@user)
+      else
+        forget(@user)
+      end
       redirect_to @user
     else
       flash.now[:danger] = 'ログインに失敗しました。'
@@ -16,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    log_out if logged_in?
     flash[:success] = 'ログアウトしました'
     redirect_to '/'
   end
