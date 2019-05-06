@@ -8,6 +8,22 @@
           <%= image_tag("/images/default.jpg") %>
         <% end %>
       </div>
+      
+    </div>
+
+    <%= render "relationships/follow_button", user: @user %>
+  
+    <% unless @user.introduce.nil? %>
+      <div class="profile-introduce">
+      
+        <%= @user.introduce %></td>
+      
+      </div>
+    <% end %>
+    <% if @user == current_user %>
+      <%= link_to "ユーザ編集", edit_user_path(current_user), class: "btn btn-primary" %>
+
+
         
       <div class="panel">
         <div class="panel-heading">
