@@ -3,36 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ゆいゆい.com</title>
     <%= csrf_meta_tags %>
-     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-      .row div {
-        
-        padding: 1em;
-        text-align: center;
-        
-      }
-    </style>
   </head>
-  
-
   <body>
     <% if flash[:notine]%>
      <div class="flash">
        <%= flash[:notice]%>
      </div>
     <% end %>
+    
     <%= render 'layouts/navbar' %>
+    
     <div class="container">
       <%= render 'layouts/flash_messages' %>
     </div>
+    
     <%= yield %>
+    
   </body>
-  
 </html>

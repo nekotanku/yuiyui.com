@@ -1,9 +1,7 @@
-
-<div class="row">
-  <aside class="col-md-6 col-md-offset-3">
-    <div class="panel">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= @user.name %></h3>
+<div class="container userPage" id="wrapper">
+  <div class="row">
+    <aside class="col-md-3">
+      <div class="profile-avatar">
         <% if @user.avater? %>
           <%= image_tag @user.avater.thumb.url %>
         <% else %>
@@ -25,16 +23,43 @@
     <% if @user == current_user %>
       <%= link_to "ユーザ編集", edit_user_path(current_user), class: "btn btn-primary" %>
 
-        
-      </div>
-    <% end %>
 
-  </aside>
-  <div class="col-xs-8">
-    <ul class="nav nav-tabs">
-      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>投稿 <% end %></li>
-      <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>フォロー <% end %></li>
-      <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>フォロワー <% end %></li>
-    </ul>
+        
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @user.name %></h3>
+          <% if @user.avater? %>
+            <%= image_tag @user.avater.thumb.url %>
+          <% else %>
+            <%= image_tag("/images/default.jpg") %>
+          <% end %>
+        </div>
+        <%= gravatar_for @user %>
+      </div>
+  
+      <%= render "relationships/follow_button", user: @user %>
+    
+      <% unless @user.introduce.nil? %>
+        <div class="profile-introduce">
+        
+          <%= @user.introduce %></td>
+        
+        </div>
+      <% end %>
+      <% if @user == current_user %>
+        <%= link_to "ユーザ編集", edit_user_path(current_user), class: "btn btn-primary" %>
+  
+          
+        </div>
+      <% end %>
+  
+    </aside>
+    <div class="col-xs-8">
+      <ul class="nav nav-tabs">
+        <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>投稿 <% end %></li>
+        <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>フォロー <% end %></li>
+        <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>フォロワー <% end %></li>
+      </ul>
+    </div>
   </div>
 </div>
