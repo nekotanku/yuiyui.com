@@ -1,11 +1,22 @@
-<li>
- <%= gravatar_for user, size: 80 %>
- <%= link_to user.name, user %>
-  <% if user.avater? %>
-    <%= image_tag user.avater.thumb.url %>
-  <% else %>
-    <%= image_tag("/images/default.jpg") %>
-  <% end %>
-</li>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ユーザー</th>
+      <th>アバター</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= link_to user.name, user %></td>
+      <td><% if user.avater? %>
+            <%= image_tag user.avater.thumb.url %>
+          <% else %>
+            <%= image_tag("/images/default.jpg") %>
+          <% end %></td>
+    </tr>
+  </tbody>
+</table> 
+  
 
   
