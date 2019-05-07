@@ -1,16 +1,14 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-
-<h1>All users</h1>
-
-<p>user search</p>
-<%= form_tag(users_path, :method => 'get' ) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
-<% end %>
-
-<ul class="users">
-  <%= render @users %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h1>ユーザーの一覧</h1>
+      <p>ユーザー検索ができます</p>
+      <%= form_tag(users_path, :method => 'get' ) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'Search', :name => nil %>
+      <% end %>
+      <%= render @users %>
+    </div>
   </div>
 </div>

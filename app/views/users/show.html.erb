@@ -1,7 +1,7 @@
 <div class="container userPage" id="wrapper">
   <div class="row">
     <aside class="col-md-3">
-      <div class="profile-avatar">
+      <div class="profile-avatar border">
         <% if @user.avater? %>
           <%= image_tag @user.avater.thumb.url %>
         <% else %>
@@ -9,13 +9,14 @@
         <% end %>
       </div>
       <div class="profile-username">
-        <h3> <%= @user.name %> </h3>
+        <h3> I am <%= @user.name %> </h3>
       </div>
       <%= render "relationships/follow_button", user: @user %>
       <div class="profile-info">
+        <h8>自己紹介文</h8>
         <% unless @user.introduce.nil? %>
-          <div class="profile-introduce">
-            <%= @user.introduce %></td>
+          <div class="profile-introduce border">
+            <p><%= @user.introduce %></p>
           </div>
         <% end %>
         <% if @user == current_user %>

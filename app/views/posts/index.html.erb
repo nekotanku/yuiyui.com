@@ -1,52 +1,43 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-
-
-  <%= form_tag posts_path, :method => 'get' do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "記事検索", :name => nil %>
-    </p>
-  <% end %> 
-  <h1>投稿一覧</h1>
-  
-  <%= render 'post' %>
-  
-  <% if @posts.any? %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ユーザー</th>
-          <th>タイトル</th>
-          <th>画像</th>
-        </tr>
-      </thead>
-      <tbody>
-        
-        <% @posts.each do |post| %>
-          <tr>
-            <td><%=link_to(post.user.name, user_path(post.user_id))%>
-                <% if post.user.avater? %>
-                  <%= image_tag post.user.avater.thumb50.url %>
-                <% else %>
-                  <%= image_tag("/images/default.jpg") %>
-                <% end %></td>
-            <td><%= link_to(post.content, post_path(post))%></td>
-          <% if post.picture? %>
-            <% post.picture.each do |picture| %>
-              <td><%= image_tag picture.thumb.url %></td>
-            <% end %>
-          <% end %>
-        <% end %>
-          </tr>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <% if @post.errors.any? %>
+        <div class="alert alert-warning">
+          <div id="error_explanation">
+            <ul>
+              <% @post.errors.full_messages.each do |post| %>
+                <li><%= post %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
       
-    </tbody>
-  </table>
-  
-  <% end %>
-
-  <%= link_to '新規メッセージの投稿', new_post_path, class: "btn btn-primary" %>
+      <h1>投稿</h1>
+      <%= form_for(@post) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, class: 'form-control' %>
+        </div>
+        <%= f.submit "Post", class: "btn btn-primary" %>
+        <div class="form-group">
+        <span class="picture">
+          <%= f.file_field :picture, :multiple => true, accept: 'image/jpeg,image/gif,image/png' %>
+          <p>画像を複数選択し、アップロードできます。</p>
+          <p>画像は5MB以下のサイズのみ対応しています。</p>
+        </span>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+      <h1>投稿一覧</h1>
+      <%= form_tag posts_path, :method => 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "記事検索", :name => nil %>
+        </p>
+      <% end %> 
+      <%= render 'post' %>
+    </div>
   </div>
 </div>
-
-  
