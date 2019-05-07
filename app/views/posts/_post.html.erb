@@ -1,0 +1,20 @@
+
+<% @posts.each do |post| %>
+    <div class="tr-Item">
+        <%= link_to post.user, class: 'tr-Item_userImage' do %>
+          <% if post.user.avater? %>
+            <%= image_tag post.user.avater.thumb50.url %>
+          <% else %>
+            <%= image_tag("/images/default.jpg") %>
+          <% end %>
+        <% end %>
+        <div class="tr-Item_body" id="posted-order">
+            <%= link_to post.content, post, class: 'tr-Item_content' %>
+            <div class="tr-Item_meta">
+                <span>by <%= link_to post.user.name, post.user, class: 'tr-Item_author' %> </span>
+                <time> <%= post.created_at.strftime('%Y年%m月%d日') %> </time>
+            </div>
+        </div>
+        
+    </div>
+<% end %>
