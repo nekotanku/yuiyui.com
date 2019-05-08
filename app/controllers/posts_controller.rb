@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
-  before_action :ensure_current_user, only: [:edit, :update, :destroy]
+  before_action :ensure_current_user, only: [:edit, :update]
   before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy,]
-
+ 
+  
   def index
     @posts=Post.search(params[:search]).order(created_at: :desc)
     @post=Post.new
@@ -16,10 +17,11 @@ class PostsController < ApplicationController
     end
   end
   def show
-    @post=Post.find_by(id: params[:id])
-    @user=User.find_by(id: @post.user_id)
+    @post = Post.find_by(id: params[:id])
+    @user = User.find_by(id: @post.user_id)
     @comments = @post.comments
     @comment = Comment.create
+    
   end
   def new
     @post=Post.new
@@ -36,7 +38,6 @@ class PostsController < ApplicationController
     else
       flash[:notice] ="投稿を編集できませんでした"
       render edit_post_path
-      
     end
   end
   def destroy
@@ -47,10 +48,9 @@ class PostsController < ApplicationController
   end
   
   private
-  
-  
   def ensure_current_user
     @post= current_user.posts.find_by(id: params[:id])
+    @admin = User.find(params[:id])
     unless @post
       redirect_to posts_path
     end

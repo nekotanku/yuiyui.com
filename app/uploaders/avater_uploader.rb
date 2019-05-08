@@ -3,7 +3,9 @@ class AvaterUploader < CarrierWave::Uploader::Base
   #include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   
-  
+ 
+
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -38,6 +40,10 @@ class AvaterUploader < CarrierWave::Uploader::Base
    end
    version :thumb50 do
      process resize_to_fit: [100, 100]
+   end
+   
+   def default_url
+    "default.jpg"
    end
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

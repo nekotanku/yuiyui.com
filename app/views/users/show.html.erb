@@ -8,6 +8,38 @@
           <%= image_tag("/images/default.jpg") %>
         <% end %>
       </div>
+
+      <%= render "relationships/follow_button", user: @user %>
+      <% unless @user.introduce.nil? %>
+        <div class="profile-introduce">
+          <%= @user.introduce %></td>
+        </div>
+      <% end %>
+      <% if @user == current_user %>
+        <%= link_to "ユーザ編集", edit_user_path(current_user), class: "btn btn-primary" %>
+        <div class="panel">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @user.name %></h3>
+            <% if @user.avater? %>
+              <%= image_tag @user.avater.thumb.url %>
+            <% else %>
+              <%= image_tag("/images/default.jpg") %>
+            <% end %>
+          </div>
+        </div>
+        <%= render "relationships/follow_button", user: @user %>
+    
+        <% unless @user.introduce.nil? %>
+          <div class="profile-introduce">
+            <td><%= @user.introduce %></td>
+          </div>
+        <% end %>
+      <% end %>
+      
+      <% if current_user.admin? && !(current_user == @user) %>
+        <%= link_to "管理者用削除", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+      <% end %>
       <div class="profile-username">
         <h3> I am <%= @user.name %> </h3>
       </div>
