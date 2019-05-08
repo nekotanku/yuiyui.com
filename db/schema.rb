@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20190507084123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "introduce"
-    t.string "avater"
     t.string "remember_digest"
+    t.string "avater"
     t.boolean "admin", default: false
   end
 
