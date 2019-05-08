@@ -1,22 +1,22 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ユーザー</th>
-      <th>アバター</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td><%= link_to user.name, user %></td>
-      <td><% if user.avater? %>
-            <%= image_tag user.avater.thumb50.url %>
-          <% else %>
-            <%= image_tag("/app/assets/images/default.jpg") %>
-          <% end %></td>
-    </tr>
-  </tbody>
-</table> 
-  
-
-  
+<% @users.each do |user| %>
+  <div class="media border-bottom">
+    <a class="align-self-start mr-3">
+      <p>It is<%=link_to(user.name, user_path(user))%></p>
+      <% if user.avater? %>
+        <%= image_tag user.avater.thumb50.url %>
+      <% else %>
+        <%= image_tag("/images/default.jpg") %>
+      <% end %>
+    </a>
+    <div class="media-body">
+      <p>★自己紹介文</p>
+      <h5 class="mt-0">
+        <% if user.introduce? %>
+          <%= user.introduce %>
+        <% else %>
+          未設定
+        <% end %>
+      </h5>
+    </div><!-- /.media-body -->
+  </div><!-- /.media -->
+<% end %>

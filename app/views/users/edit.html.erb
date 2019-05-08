@@ -1,53 +1,49 @@
 <div class="text-center">
   <h1>Update your profile</h1>
 </div>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    
-    <%= form_for(@user) do |f| %>
-
-      <div class="form-group">
-        <%= f.label :introduce, '自己紹介文' %>
-        <%= f.text_area :introduce, class: 'form-control' %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label :name, 'Name' %>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :email, 'Email' %>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password, 'Password' %>
-        <%= f.password_field :password, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password_confirmation, 'Confirmation' %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
-      </div>
-      
-      
-      <% if @user.avater? %>
-        <%= image_tag @user.avater.thumb.url %>
-      <% else %>
-        <%= image_tag ("/images/default.jpg") %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <%= form_for(@user) do |f| %>
+        <div class="form-group">
+          <%= f.label :introduce, '自己紹介文' %>
+          <%= f.text_area :introduce, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :name, 'Name' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+  
+        <div class="form-group">
+          <%= f.label :email, 'Email' %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+  
+        <div class="form-group">
+          <%= f.label :password, 'Password' %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+  
+        <div class="form-group">
+          <%= f.label :password_confirmation, 'Confirmation' %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+        
+        
+        <% if @user.avater? %>
+          <%= image_tag @user.avater.thumb.url %>
+        <% else %>
+          <%= image_tag("/images/default.jpg") %>
+        <% end %>
+        <%= f.file_field :avater %>
+  
+        <%= f.submit '更新する', class: 'btn btn-primary btn-block' %>
       <% end %>
-      <%= f.file_field :avater %>
- 
-      
-
-      <%= f.submit '更新する', class: 'btn btn-primary btn-block' %>
-    <% end %>
-    
-    
-    <div>
-      <%= link_to "退会する", @user, method: :delete, data: { confirm: "二度と復元できません" }%>
+      <div>
+        <%= link_to "退会する", @user, method: :delete, data: { confirm: "二度と復元できません" }%>
+      </div>
     </div>
   </div>
 </div>
