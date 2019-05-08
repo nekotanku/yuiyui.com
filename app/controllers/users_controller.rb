@@ -3,12 +3,12 @@ class UsersController < ApplicationController
 
   
   def index
-    @users = User.search(params[:search]).order(created_at: :desc)
+    @users = User.search(params[:search]).order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
     @followings = @user.followings
     @followers = @user.followers
   end
