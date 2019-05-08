@@ -11,6 +11,9 @@ class UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
     @followings = @user.followings
     @followers = @user.followers
+    
+    
+    
   end
 
   def new

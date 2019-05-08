@@ -4,7 +4,12 @@
     
     <table class="table table-bordered">
       <div class= "posts-show-item">
-        
+        <tr>
+          <th>いいね数  <%= @likes_count %></th>
+          <td>
+            <%= render "likes/like_button", post: @post %>
+          </td>
+        </tr>
         <tr>
           <th>メッセージ</th>
           <td><%= @post.content %></td>
@@ -17,17 +22,16 @@
             <% end %>
           <% end %>
         </tr>
+        
         <div class= "post-item">
           <%= @post.created_at %>
         </div>
 　      <div class="post-user-name">
 　       <%= link_to(@user.name, user_path(@user)) %>
 　      </div>
-　
-　      
-　      <div class= "post-likes"
-          <%= render "likes/like_button", post: @post %>
-        </div>
+        
+        
+　       
     </table>　  
         <% if current_user.admin? && !(current_user == @admin) %>
           <div>
