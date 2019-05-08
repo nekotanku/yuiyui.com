@@ -8,54 +8,30 @@
           <%= image_tag("/images/default.jpg") %>
         <% end %>
       </div>
-
-      <%= render "relationships/follow_button", user: @user %>
-      <% unless @user.introduce.nil? %>
-        <div class="profile-introduce">
-          <%= @user.introduce %></td>
-        </div>
-      <% end %>
-      <% if @user == current_user %>
-        <%= link_to "ユーザ編集", edit_user_path(current_user), class: "btn btn-primary" %>
-        <div class="panel">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= @user.name %></h3>
-            <% if @user.avater? %>
-              <%= image_tag @user.avater.thumb.url %>
-            <% else %>
-              <%= image_tag("/images/default.jpg") %>
-            <% end %>
-          </div>
-        </div>
-        <%= render "relationships/follow_button", user: @user %>
-    
-        <% unless @user.introduce.nil? %>
-          <div class="profile-introduce">
-            <td><%= @user.introduce %></td>
-          </div>
-        <% end %>
-      <% end %>
       
+      <div class="profile-username">
+        <h3> I am <%= @user.name %> </h3>
+      </div>
       <% if current_user.admin? && !(current_user == @user) %>
         <%= link_to "管理者用削除", @user, method: :delete,
                                   data: { confirm: "You sure?" } %>
       <% end %>
-      <div class="profile-username">
-        <h3> I am <%= @user.name %> </h3>
-      </div>
       <%= render "relationships/follow_button", user: @user %>
       <div class="profile-info">
         <h8>自己紹介文</h8>
-        <% unless @user.introduce.nil? %>
           <div class="profile-introduce border">
-            <p><%= @user.introduce %></p>
+            <% if @user.introduce? %>
+              <p><%= @user.introduce %></p>
+            <% else %>
+              <p>未設定</p>
+            <% end %>
           </div>
-        <% end %>
         <% if @user == current_user %>
           <%= link_to "ユーザ編集", edit_user_path(current_user), class: "btn btn-primary" %>
         <% end %>
       </div>
     </aside>
+    
     <div class="col-md-9">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item active">
