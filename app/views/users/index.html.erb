@@ -9,6 +9,7 @@
         <%= submit_tag 'Search', :name => nil %>
       <% end %>
       <%= render 'user', users: @users %>
+      <%= paginate @users %>
     </div>
   </div>
 </div>
