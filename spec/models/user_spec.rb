@@ -104,4 +104,6 @@ RSpec.describe User, type: :model do
       expect(user.authenticated?(remember_token: '')).to eq false
     end
   end
+  
+  
 end

@@ -10,9 +10,9 @@
     <tr>
       <td><%= link_to user.name, user %></td>
       <td><% if user.avater? %>
-            <%= image_tag user.avater.thumb.url %>
+            <%= image_tag user.avater.thumb50.url %>
           <% else %>
-            <%= image_tag("/images/default.jpg") %>
+            <%= image_tag("/app/assets/images/default.jpg") %>
           <% end %></td>
     </tr>
   </tbody>
