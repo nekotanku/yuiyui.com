@@ -6,7 +6,7 @@
         <% if post.user.avater? %>
           <%= image_tag post.user.avater.thumb50.url %>
         <% else %>
-          <%= image_tag("/images/default.jpg") %>
+          <%= image_tag"/assets/default.jpg", :size => '100x100' %>
         <% end %>
       </a>
       <div class="media-body">
