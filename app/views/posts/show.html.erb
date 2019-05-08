@@ -24,18 +24,7 @@
 　       <%= link_to(@user.name, user_path(@user)) %>
 　      </div>
 　
-　      <h2>コメント一覧</h2>
-        <% @comments.each do |c| %>
-          <div>
-            <a href="/users/<%= @post.user.id %>"></a>
-            <%= c.content %>
-            <hr>
-          </div>
-        <% end %>
-
-        <div class= "comments">
-          <%= render "comments/comment_form", post: @post %>
-        </div>
+　      
 　      <div class= "post-likes"
           <%= render "likes/like_button", post: @post %>
         </div>
