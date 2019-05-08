@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc)
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def new
@@ -48,13 +50,11 @@ class UsersController < ApplicationController
   def followings
     @user = User.find(params[:id])
     @followings = @user.followings
-    
   end
   
   def followers
     @user= User.find(params[:id])
     @followers = @user.followers
-    
   end
   
   private

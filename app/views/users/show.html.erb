@@ -17,6 +17,36 @@
                                   data: { confirm: "You sure?" } %>
       <% end %>
       <%= render "relationships/follow_button", user: @user %>
+      <div class="profileUser_following">
+        <p>フォロー中のユーザー </p>
+        <div class="profileUser_following-body border">
+          <ul>
+            <% @user.followings.each do |user| %>
+              <li>
+                <%= link_to user do %> 
+                  <% user.name %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="profileUser_following">
+        <p>フォロワーリスト </p>
+        <div class="profileUser_following-body border">
+          <ul>
+            <% @user.followers.each do |user| %>
+              <li>
+                <%= link_to user do %> 
+                  <%= link_to user do %> 
+                    <% user.name %>
+                  <% end %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
       <div class="profile-info">
         <h8>自己紹介文</h8>
           <div class="profile-introduce border">
@@ -38,10 +68,7 @@
             <a href="#posted" class="nav-link posted-tab" id="posted-tab" data-toggle="tab" role="tab" aria-controls="posted" aria-selected="true">投稿した記事</a>
         </li>
         <li class="nav-item">
-            <a href="#follow" id="follow-tab" data-toggle="tab" class="nav-link posted-tab" role="tab" aria-controls="follow" aria-selected="true">フォロー</a>
-        </li>
-        <li class="nav-item">
-            <a href="#follower" id="follower-tab" data-toggle="tab" class="nav-link posted-tab" role="tab" aria-controls="follower" aria-selected="false">フォロワー</a>
+            <a href="#follow" class="nav-link follow-tab" id="follow-tab" data-toggle="tab" role="tab" aria-controls="follow" aria-selected="true">フォロー</a>
         </li>
       </ul>
       <div class="tab-content mt-3" id="myTabContent">
@@ -49,10 +76,7 @@
           <%= render 'posts/post' %>
         </div>
         <div class="tab-pane fade show" id="follow" role="tabpanel" aria-labelledby="follow-tab">
-          <%= link_to followings_user_path(@user) do %>フォロー <% end %>
-        </div>
-        <div class="tab-pane fade show" id="follower" role="tabpanel" aria-labelledby="follower-tab">
-          <%= link_to followers_user_path(@user) do %>フォロワー <% end %>
+          <%= render 'user', users: @followings %>
         </div>
       </div>
     </div>
