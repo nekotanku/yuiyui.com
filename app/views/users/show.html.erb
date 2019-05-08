@@ -8,7 +8,10 @@
           <%= image_tag"/assets/default.jpg", :size => '100x100' %>
         <% end %>
       </div>
-      
+      <section class="stats">
+        <%= render 'users/stats' %>
+      </section>
+
       <div class="profile-username">
         <h3> I am <%= @user.name %> </h3>
       </div>
@@ -19,6 +22,7 @@
       <%= render "relationships/follow_button", user: @user %>
       <div class="profileUser_following">
         <p>フォロー中のユーザー </p>
+        <%= @followings_count %>
         <div class="profileUser_following-body border">
           <ul>
             <% @user.followings.each do |user| %>
@@ -33,6 +37,7 @@
       </div>
       <div class="profileUser_following">
         <p>フォロワーリスト </p>
+        <%= @followers_count %>
         <div class="profileUser_following-body border">
           <ul>
             <% @user.followers.each do |user| %>
