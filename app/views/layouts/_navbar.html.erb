@@ -6,6 +6,7 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-content">
         <ul class="navbar-nav ml-auto">
+          
           <li class="nav-item">
             <%= link_to("ユーザー一覧", users_path)%>
           </li>
@@ -23,6 +24,9 @@
               <%= link_to 'ログアウト', logout_path, method: :delete %>
             </li>
           <% else %>
+            <li class="nav-item">
+              <%= link_to("ゆいゆいどっとこむとは？", about_path)%>
+            </li>
             <li class="nav-item">
               <%= link_to 'ログイン', login_path %>
             </li>
