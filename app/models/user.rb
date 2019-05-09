@@ -3,12 +3,14 @@ class User < ApplicationRecord
   before_save { self.email.downcase! }
   has_secure_password
   validates :name, presence: true,
-                   length: { in: 3..20 }, 
+                   length: { in: 1..10 }, 
                    uniqueness: { case_sensitive: false }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
-  validates :introduce, length: { maximum: 200 }
+  validates :introduce, length: { maximum: 100 }
+  
+  mount_uploader :avater, AvaterUploader
   
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -68,5 +70,4 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
-  mount_uploader :avater, AvaterUploader
 end
