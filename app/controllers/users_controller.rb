@@ -9,11 +9,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
-    @followings = @user.followings
-    @followers = @user.followers
-    
-    
-    
   end
 
   def new
@@ -22,7 +17,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       redirect_to @user
     else
@@ -37,11 +31,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
+      flash[:success] = "プロフィールを編集しました"
       redirect_to user_path
     else
+      flash[:danger] = "プロフィールを編集できませんでした（原因を確認してください）"
       render 'edit'
     end
-      
   end
 
   def destroy
@@ -52,12 +47,12 @@ class UsersController < ApplicationController
   
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followings
+    @followings = @user.followings.page(params[:page]).per(6)
   end
   
   def followers
     @user= User.find(params[:id])
-    @followers = @user.followers
+    @followers = @user.followers.page(params[:page]).per(6)
   end
   
   private

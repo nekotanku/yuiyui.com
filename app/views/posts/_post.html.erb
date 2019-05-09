@@ -1,15 +1,17 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <div class="media border-bottom">
-      <a class="align-self-start mr-3">
-        <p>by<%=link_to(post.user.name, user_path(post.user_id))%></p>
+      <figure class="align-self-start mr-3">
         <% if post.user.avater? %>
           <%= image_tag post.user.avater.thumb50.url %>
         <% else %>
           <%= image_tag"/assets/default.jpg", :size => '100x100' %>
         <% end %>
-      </a>
-      <div class="media-body">
+        <figcaption>
+          <%=link_to(post.user.name, user_path(post.user_id))%>
+        </figcaption>
+      </figure>
+      <div class="media-body", style="word-break: break-all;">
         <h5 class="mt-0"><%= link_to(post.content, post_path(post))%></h5>
         <time> <%= post.created_at.strftime('%Y年%m月%d日') %> </time>
       </div><!-- /.media-body -->
