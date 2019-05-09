@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       redirect_to @user
     else
@@ -37,11 +36,12 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
+      flash[:success] = "プロフィールを編集しました"
       redirect_to user_path
     else
+      flash[:danger] = "プロフィールを編集できませんでした（原因を確認してください）"
       render 'edit'
     end
-      
   end
 
   def destroy

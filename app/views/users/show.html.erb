@@ -23,7 +23,7 @@
       <div class="profileUser_following">
         <p>フォロー中のユーザー </p>
         <%= @followings_count %>
-        <div class="profileUser_following-body border">
+        <div class="profileUser_following-body">
           <ul>
             <% @user.followings.each do |user| %>
               <li>
@@ -38,7 +38,7 @@
       <div class="profileUser_following">
         <p>フォロワーリスト </p>
         <%= @followers_count %>
-        <div class="profileUser_following-body border">
+        <div class="profileUser_following-body">
           <ul>
             <% @user.followers.each do |user| %>
               <li>
@@ -54,7 +54,7 @@
       </div>
       <div class="profile-info">
         <h8>自己紹介文</h8>
-          <div class="profile-introduce border">
+          <div class="profile-introduce">
             <% if @user.introduce? %>
               <p><%= @user.introduce %></p>
             <% else %>
