@@ -1,19 +1,14 @@
-<div class="row">
-  <aside class="col-xs-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= @user.name %></h3>
-      </div>
-      
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h1><%= link_to @user.name, @user %>さんのフォローリスト</h1>
+      <%= form_tag(users_path, :method => 'get' ) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'ユーザー検索', :name => nil %>
+      <% end %>
+      <%= render 'user', users: @followers %>
+      <%= paginate @followers %>
     </div>
-    <%= render 'relationships/follow_button', user: @user %>
-  </aside>
-  <div class="col-xs-8">
-    <ul class="nav nav-tabs nav-justified">
-      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>投稿<% end %></li>
-      <li class="<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= link_to followings_user_path(@user) do %>フォロー <% end %></li>
-      <li class="<%= 'active' if current_page?(followers_user_path(@user)) %>"><%= link_to followers_user_path(@user) do %>フォロワー <% end %></li>
-    </ul>
-    <%= render 'users', users: @followers %>
   </div>
 </div>
