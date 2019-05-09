@@ -1,16 +1,18 @@
 <% users.each do |user| %>
   <div class="media border-bottom">
-    <a class="align-self-start mr-3">
-      <p>It is<%=link_to(user.name, user_path(user))%></p>
+    <figure class="align-self-start mr-3">
       <% if user.avater? %>
         <%= image_tag user.avater.thumb50.url %>
       <% else %>
         <%= image_tag"/assets/default.jpg", :size => '100x100' %>
       <% end %>
-    </a>
-    <div class="media-body">
+      <figcaption>
+        <%=link_to(user.name, user_path(user))%>
+      </figcaption>
+    </figure>
+    <div class="media-body" style="word-break: break-all;">
       <p>★自己紹介文</p>
-      <h5 class="mt-0">
+      <h5>
         <% if user.introduce? %>
           <%= user.introduce %>
         <% else %>

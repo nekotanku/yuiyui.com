@@ -9,11 +9,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
-    @followings = @user.followings
-    @followers = @user.followers
-    
-    
-    
   end
 
   def new
@@ -52,12 +47,12 @@ class UsersController < ApplicationController
   
   def followings
     @user = User.find(params[:id])
-    @followings = @user.followings
+    @followings = @user.followings.page(params[:page]).per(6)
   end
   
   def followers
     @user= User.find(params[:id])
-    @followers = @user.followers
+    @followers = @user.followers.page(params[:page]).per(6)
   end
   
   private
