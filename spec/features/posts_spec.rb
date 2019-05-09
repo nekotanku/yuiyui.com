@@ -6,14 +6,26 @@ RSpec.feature "Posts", type: :feature do
   given!(:post) { FactoryBot.create(:yuri_post, user: user) }
   given!(:other_post) { FactoryBot.create(:taro_post, user: other_user) }
   
-  scenario '記事を投稿できること' do
-    login(user)
-    click_link "新規投稿"
-    expect {
-      fill_in "post[content]", with: "ハロー世界"
-      click_on "Post"
-    }.to change(Post, :count).by(1)
-    expect(page).to have_text "ハロー世界"
+  feature '記事を投稿する場合' do
+    scenario '文字のみの記事を投稿できること' do
+      login(user)
+      visit new_post_path
+      expect {
+        fill_in "post[content]", with: "ハロー世界"
+        click_on "Post"
+      }.to change(Post, :count).by(1)
+      expect(page).to have_text "ハロー世界"
+    end
+    scenario '画像付きで記事を投稿できること' do
+      login(user)
+      click_link "新規投稿"
+      expect {
+        fill_in "post[content]", with: "ハロー世界"
+        attach_file "post[picture]", "#{Rails.root}/spec/fixtures/test.png"
+        click_on "Post"
+      }.to change(Post, :count).by(1)
+      expect(page).to have_current_path(posts_path)
+    end
   end
   
   feature '記事を編集する場合' do
@@ -48,7 +60,7 @@ RSpec.feature "Posts", type: :feature do
   scenario '記事を検索できること(content検索)' do
     visit posts_path
     fill_in 'search', with: post.content
-    click_on "Search"
+    click_on "記事検索"
     expect(page).to have_content post.content
     expect(page).to have_no_content other_post.content
   end
@@ -57,8 +69,8 @@ RSpec.feature "Posts", type: :feature do
   def login(user)
     visit login_path
     click_link "ログイン"
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log in"
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: user.password
+    click_button "ログインする"
   end
 end
