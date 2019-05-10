@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :ensure_current_user, only: [:edit, :update]
-  before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy,]
+  before_action :require_user_logged_in, only: [:new, :show, :create, :edit, :update, :destroy,]
  
   
   def index
