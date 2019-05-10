@@ -12,8 +12,8 @@
         </figcaption>
       </figure>
       <div class="media-body", style="word-break: break-all;">
-        <h5 class="mt-0"><%= link_to(post.content, post_path(post))%></h5>
-        <time> <%= post.created_at.strftime('%Y年%m月%d日') %> </time>
+        <h5 class="mt-0 text-left"><%= link_to(post.content, post_path(post))%></h5>
+        <p class="text-left"> 投稿日時：<%= post.created_at.strftime('%Y年%m月%d日') %> </p>
       </div><!-- /.media-body -->
     </div><!-- /.media -->
   <% end %>

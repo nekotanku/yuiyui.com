@@ -1,6 +1,8 @@
-<div class="row">
-  <div class="col-xs-6">
-    
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <h1 class="font-italic">投稿の編集ページです</h1>
       <% if @post.errors.any? %>
         <div id="error_explanation">
           <ul>
@@ -10,26 +12,34 @@
           </ul>
         </div>
       <% end %>
-  
-
-
-<% if @post.picture? %>
-  <% @post.picture.each do |picture| %>
-    <%= image_tag picture.url %>
-  <% end %>
-<% end %>
-
-<%= form_for(@post) do |f| %>
-  <div class="form-group">
-    <%= f.label :content, '編集' %>
-    <%= f.text_field :content,  class: 'form-control' %>
-  </div>
-  <%= f.submit "編集", class: "btn btn-primary" %>
-  <span class="picture">
-    <%= f.file_field :picture, :multiple => true, accept: 'image/jpeg,image/gif,image/png' %>
-    <p>画像を複数選択し、アップロードできます。</p>
-    <p>画像は5MB以下のサイズのみ対応しています。</p>
-  </span>
-<% end %>
+      <div class="media border-bottom">
+        <div class="media-body", style="word-break: break-all;">
+          <p class="text-left"> 投稿日時：<%= @post.created_at.strftime('%Y年%m月%d日') %> </p>
+          <%= form_for(@post) do |f| %>
+            <div class="form-group">
+              <%= f.label :content, '投稿の編集' %>
+              <%= f.text_area :content,  class: 'form-control' %>
+            </div>
+            <div>
+              <%= f.submit "更新する", class: "btn btn-primary" %>
+            </div>
+          <ul class="float-left">
+            <% if @post.picture? %>
+              <% @post.picture.each do |picture| %>
+                <li><%= image_tag picture.thumb_big.url %></li>
+              <% end %>
+            <% end %>
+          </ul>
+          <div class="picture">
+            <button type="button" class="btn btn-outline-secondary rounded-pill">
+              <%= f.file_field :picture, :multiple => true, accept: 'image/jpeg,image/gif,image/png' %>
+            </button>
+            <p>画像を複数選択し、アップロードできます。</p>
+            <p>画像は5MB以下のサイズのみ対応しています。</p>
+          </div>
+        <% end %>
+        </div><!-- /.media-body -->
+      </div><!-- /.media -->
+    </div>
   </div>
 </div>
