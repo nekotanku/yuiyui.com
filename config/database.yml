@@ -25,5 +25,5 @@ production:
   encoding: unicode
   pool: 5
   database: yuiyuicom_production
-  username:yuiyuicom
+  username: yuiyuicom
   password: <%= ENV['YUIYUICOM_DATABASE_PASSWORD'] %>
