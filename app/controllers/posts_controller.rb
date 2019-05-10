@@ -20,7 +20,6 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @user = User.find_by(id: @post.user_id)
     @likes_count =Like.where(post_id: @post.id).count
-   
   end
   def new
     @post=Post.new
@@ -49,7 +48,6 @@ class PostsController < ApplicationController
   private
   def ensure_current_user
     @post= current_user.posts.find_by(id: params[:id])
-    @admin = User.find(params[:id])
     unless @post
       redirect_to posts_path
     end
