@@ -16,16 +16,7 @@ RSpec.feature "Posts", type: :feature do
       }.to change(Post, :count).by(1)
       expect(page).to have_text "ハロー世界"
     end
-    scenario '画像付きで記事を投稿できること' do
-      login(user)
-      click_link "新規投稿"
-      expect {
-        fill_in "post[content]", with: "ハロー世界"
-        attach_file "post[picture]", "#{Rails.root}/spec/fixtures/test.png"
-        click_on "Post"
-      }.to change(Post, :count).by(1)
-      expect(page).to have_current_path(posts_path)
-    end
+    
   end
   
   feature '記事を編集する場合' do

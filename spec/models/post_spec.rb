@@ -1,19 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  it "jpg, jpeg, gif, pngは有効であること" do
-    formats = %w(jpg jpeg gif png)
-    formats.each do |format|
-      image_path = File.join(Rails.root, "spec/fixtures/test.#{format}")
-      post = FactoryBot.build(:yuri_post, picture: File.open(image_path))
-      expect(post).to be_valid
-    end
-  end
-  it "is invalid with rb" do
-    image_path = File.join(Rails.root, "spec/fixtures/test.rb")
-    post = FactoryBot.build(:yuri_post, picture: File.open(image_path))
-    expect(post).not_to be_valid
-  end
   let(:post){ FactoryBot.build(:yuri_post) }
   describe '投稿が有効な場合' do
     it '有効であること' do
@@ -56,6 +43,4 @@ RSpec.describe Post, type: :model do
       expect(post.like_users).to_not include(current_user)
     end
   end
-  
-  
 end
