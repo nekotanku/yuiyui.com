@@ -15,7 +15,7 @@
       <% end %>
       
       <h1>投稿</h1>
-      <%= form_for(@post) do |f| %>
+      <%= form_for(@post, local: true) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control' %>
         </div>

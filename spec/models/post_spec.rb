@@ -43,6 +43,4 @@ RSpec.describe Post, type: :model do
       expect(post.like_users).to_not include(current_user)
     end
   end
-  
-  
 end
