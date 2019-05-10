@@ -17,14 +17,16 @@
       
       <h1>投稿</h1>
       <h3>投稿してみんなで共有して応援しよう！！</h3>
-      <%= form_for(@post) do |f| %>
+      <%= form_for(@post, local: true) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control' %>
         </div>
         <%= f.submit "Post", class: "btn btn-primary" %>
         <div class="form-group">
           <span class="picture">
-            <%= f.file_field :picture, :multiple => true, accept: 'image/jpeg,image/gif,image/png' %>
+            <button type="button" class="btn btn-outline-secondary rounded-pill">
+              <%= f.file_field :picture, :multiple => true, accept: 'image/jpeg,image/gif,image/png' %>
+            </button>
             <p>画像を複数選択し、アップロードできます。</p>
             <p>画像は5MB以下のサイズのみ対応しています。</p>
           </span>

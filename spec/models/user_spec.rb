@@ -7,6 +7,14 @@ RSpec.describe User, type: :model do
     it '有効であること' do
       expect(user).to be_valid
     end
+    it "アバターの拡張子がjpg, jpeg, gif, pngであれば有効であること" do
+      formats = %w(jpg jpeg gif png)
+      formats.each do |format|
+        image_path = File.join(Rails.root, "spec/fixtures/test.#{format}")
+        user = FactoryBot.build(:yuri, avater: File.open(image_path))
+        expect(user).to be_valid
+      end
+    end
   end
     
   describe 'ユーザーが無効な場合' do
@@ -17,10 +25,6 @@ RSpec.describe User, type: :model do
       end
       it 'ユーザー名が存在しない場合無効であること' do
         user.name = nil
-        expect(user).to_not be_valid
-      end
-      it 'ユーザー名が3文字以下の場合無効であること' do
-        user.name = 'a' * 2
         expect(user).to_not be_valid
       end
       it 'ユーザー名が20文字以上の場合無効であること' do
@@ -67,6 +71,14 @@ RSpec.describe User, type: :model do
       it '自己紹介が200文字以上の場合無効であること' do
         user.introduce = 'a' * 201
         expect(user).to_not be_valid
+      end
+    end
+    
+    context 'アバターに対するバリデーション' do
+      it "拡張子がjpg, jpeg, gif, png以外であれば無効" do
+        image_path = File.join(Rails.root, "spec/fixtures/test.rb")
+        user = FactoryBot.build(:yuri, avater: File.open(image_path))
+        expect(user).not_to be_valid
       end
     end
   end

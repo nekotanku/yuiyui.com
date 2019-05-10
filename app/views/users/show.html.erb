@@ -23,11 +23,13 @@
       <div class="profile-info">
         <h8>自己紹介文</h8>
           <div class="profile-introduce border" style="word-wrap:break-word;" >
-            <% if @user.introduce? %>
-              <p><%= @user.introduce %></p>
-            <% else %>
-              <p>未設定</p>
-            <% end %>
+            <p class="text-left">
+              <% if @user.introduce? %>
+                <%= @user.introduce %>
+              <% else %>
+                未設定
+              <% end %>
+            </p>
           </div>
         <% if @user == current_user %>
           <%= link_to "ユーザ編集", edit_user_path(current_user), class: "btn btn-primary" %>
