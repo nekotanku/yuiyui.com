@@ -44,13 +44,49 @@
            font-size: 15px;
            h3{ font-size: 30px;}
           }
-.fixed-image{ position: fixed;
-                top: 150px;
-                left: 40px;}
-.fixed-image2{ position: fixed;
-                top: 300px;
-                right: 40px;}
-.fixed-image3{ position: fixed;
-                top: 95px;
-                right: 300px;}
-                
+.post-index{ background-image: url(back3.jpg);
+             background-size: cover;
+             height: 1200px;
+             opacity: 0.8;
+            }
+.user-index{ background-image: url(back3.jpg);
+             background-size: cover;
+             height: 1200px;
+             opacity: 0.8;
+            }
+.userPage{ background-image: url(back4.jpg);
+             background-size: cover;
+             height: 850px;
+             opacity: 0.8;
+            }
+.login {background-image: url(back5.jpg);
+             background-size: cover;
+             height: 900px;
+             opacity: 0.8;
+        }
+.signup{background-image: url(back5.jpg);
+             background-size: cover;
+             height: 850px;
+             opacity: 0.8;
+        }            
+.post-show{background-image: url(back3cd.jpg);
+             background-size: cover;
+             height: 1000px;
+             opacity: 0.8;
+        }            
+.followings{background-image: url(back2.jpg);
+             background-size: cover;
+             height: 850px;
+             opacity: 0.8;
+            }
+.followers{background-image: url(back2.jpg);
+             background-size: cover;
+             text-align: center;
+             height: 850px;
+             opacity: 0.8;
+            }
+.post-show{ background-image: url(back3.jpg);
+             background-size: cover;
+             text-align: center;
+             height: 1000px;
+             opacity: 0.8; } 

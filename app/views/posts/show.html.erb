@@ -1,38 +1,36 @@
-
-<div class="row">
-  <aside class="col-md-6 col-md-offset-3">
-    
-    <table class="table table-bordered">
-      <div class= "posts-show-item">
-        <tr>
-          <th>いいね数  <%= @likes_count %></th>
-          <td>
-            <%= render "likes/like_button", post: @post %>
-          </td>
-        </tr>
-        <tr>
-          <th>メッセージ</th>
-          <td><%= @post.content %></td>
-        </tr>
-        <tr>
-          <th>画像</th>
-          <% if @post.picture? %>
-            <% @post.picture.each do |picture| %>
-              <td><%= image_tag picture.url %></td>
-            <% end %>
-          <% end %>
-        </tr>
+<div class= "container post-show">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      
+      <table class="table table-bordered">
+        <div class= "posts-show-item">
+          <tr>
+            <th>いいね数  <%= @likes_count %></th>
+            <td>
+              <%= render "likes/like_button", post: @post %>
+            </td>
+          </tr>
+          <tr>
+            <th>メッセージ</th>
+            <td><%= @post.content %></td>
+          </tr>
+          <tr>
+            <th>画像</th>
+              <% if @post.picture? %>
+                <% @post.picture.each do |picture| %>
+                  <td><%= image_tag picture.url %></td>
+                <% end %>
+              <% end %>
+            </tr>
         
-        <div class= "post-item">
-          <%= @post.created_at %>
-        </div>
-　      <div class="post-user-name">
-　       <%= link_to(@user.name, user_path(@user)) %>
-　      </div>
-        
-        
-　       
-    </table>　  
+          <div class= "post-item">
+            <%= @post.created_at %>
+          </div>
+　        <div class="post-user-name">
+　           <%= link_to(@user.name, user_path(@user)) %>
+　        </div>
+      </table>　  
         <% if current_user.admin? && !(current_user == @admin) %>
           <div>
             <%=link_to "管理者用削除",@admin,method: :delete,data:{confirm:'本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
@@ -47,6 +45,7 @@
         </div>
        <% end %>  
        
-      </div>
-  </aside>
+        </div>
+    </div>
+  </div>
 </div>
