@@ -1,19 +1,19 @@
 # README
 
 # 製作者
-  + nekotanku(https://github.com/nekotanku)
-  + Tshi66 (https://github.com/Tshi66)
++ nekotanku(https://github.com/nekotanku)
++ Tshi66 (https://github.com/Tshi66)
 
 
 # yuiyui.com
 
-  好きなアイドルや声優さんのライブ、グッズ、書籍、CD、DVD、BDなどの
-  感想を写真付きで共有できるサービスです。[ https://yuiyuicom.herokuapp.com/ ]
+好きなアイドルや声優さんのライブ、グッズ、書籍、CD、DVD、BDなどの
+感想を写真付きで共有できるサービスです。[ https://yuiyuicom.herokuapp.com/ ]
 
-  ***DebugAccount:***
+***DebugAccount:***
 
-  [email] yui@yui.com
-  [password] password
+[email] yui@yui.com
+[password] password
 
 # 使用した技術
   
