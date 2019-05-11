@@ -7,12 +7,12 @@
 
 # yuiyui.com
 
-好きなアイドルや声優さんのライブ、グッズ、書籍、CD、DVD、BDなどの
+好きなアイドルや声優さんのライブ、グッズ、書籍、CD、DVD、BDなどの  
 感想を写真付きで共有できるサービスです。[ https://yuiyuicom.herokuapp.com/ ]
 
 ***DebugAccount:***
 
-[email] yui@yui.com
+[email] yui@yui.com  
 [password] password
 
 # 使用した技術
