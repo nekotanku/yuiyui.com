@@ -3,8 +3,9 @@
 # 製作者
 + nekotanku(https://github.com/nekotanku)
     + ***Wantedly***(https://www.wantedly.com/users/100641104)  
+    
 + Tshi66 (https://github.com/Tshi66)
-    + ***Wantedly***(https://www.wantedly.com/users/99532404)
+    + ***Wantedly***(https://www.wantedly.com/users/99532404)  
 
 
 # yuiyui.com
