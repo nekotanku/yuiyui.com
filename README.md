@@ -1,8 +1,8 @@
 # README
 
 # 製作者
-+ nekotanku(https://github.com/nekotanku)
-+ Tshi66 (https://github.com/Tshi66)
++ nekotanku(https://github.com/nekotanku) wantedly(https://www.wantedly.com/users/100641104)  
++ Tshi66 (https://github.com/Tshi66) wantedly(https://www.wantedly.com/users/99532404)
 
 
 # yuiyui.com
