@@ -1,24 +1,66 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 製作者
++ nekotanku(https://github.com/nekotanku)
++ Tshi66 (https://github.com/Tshi66)
 
-Things you may want to cover:
 
-* Ruby version
+# yuiyui.com
 
-* System dependencies
+好きなアイドルや声優さんのライブ、グッズ、書籍、CD、DVD、BDなどの  
+感想を写真付きで共有できるサービスです。[ https://yuiyuicom.herokuapp.com/ ]
 
-* Configuration
+***DebugAccount:***
 
-* Database creation
+[email] yui@yui.com  
+[password] password
 
-* Database initialization
+# 使用した技術
+  
+  + デプロイ
+      + heroku（GitHubと連携した自動デプロイサービスも利用）
+  
+  + Rspec
+      + 単体テスト
+      + 統合テスト
+  
+  + 画像アップロード
+      + carrierwave
+      + minimagick
+  
+  + DB
+      + 開発、テスト環境：sqlite3
+      + 本番環境：PostgreSQL
+  
+  + ページネーション
+      + kaminari
+  
+  + デザイン
+      + bootstrap
+    
+  + キーワード検索機能
+      + ユーザー名、記事の中身で検索可能
+      + gemを使わずに実装
+  
+  + ユーザー認証
+      + 認証まわりの勉強を兼ねてdevise等のgemを使わずに実装
+      + ログイン,ログアウト,永続ログイン,パスワード再設定など
+      
+  + 管理ユーザー機能
+      + 管理ユーザーのみ全てのアカウントとポストの削除が可能
+      
+# 主な機能
+  
+  + ユーザーの作成、削除、編集
+  + 投稿の作成、削除、編集
+  + 複数画像の投稿
+  + ユーザーのアバター画像変更
+  + 投稿に「いいね」をつける
+  + 他ユーザーをフォロー、アンフォローする
+  + 投稿の内容、ユーザー名の検索 
+  
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Requirement
+   + Ruby : 2.5.3
+   + Rails: 5.1.7
+ 
