@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container post-new">
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
+      
       <% if @post.errors.any? %>
         <div class="alert alert-warning">
           <div id="error_explanation">
@@ -15,6 +16,7 @@
       <% end %>
       
       <h1>投稿</h1>
+      <h3>投稿してみんなで共有して応援しよう！！</h3>
       <%= form_for(@post, local: true) do |f| %>
         <div class="form-group">
           <%= f.text_area :content, class: 'form-control' %>
