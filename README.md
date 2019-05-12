@@ -1,16 +1,14 @@
 # 製作者(共同制作)
 + nekotanku(https://github.com/nekotanku)
     + ***Wantedly:***(https://www.wantedly.com/users/100641104)  
-    
 + Tshi66 (https://github.com/Tshi66)
     + ***Wantedly:***(https://www.wantedly.com/users/99532404)  
 
 # yuiyui.com  
 好きなアイドルや声優さんのライブ、グッズ、書籍、CD、DVD、BDなどの  
-感想を写真付きで共有できるサービスです。[ https://yuiyuicom.herokuapp.com/ ]
+感想を写真付きで共有できるサービスです。[ https://yuiyuicom.herokuapp.com/ ]  
 ***DebugAccount:***  
-[email] yui@yui.com  
-[password] password
+ログイン画面に、テスト用のアカウントを用意しています。ご利用ください。
 
 # 使用した技術
   + デプロイ
