@@ -3,17 +3,22 @@
     <div class="media border-bottom">
       <figure class="align-self-start mr-3">
         <% if post.user.avater? %>
-          <%= image_tag post.user.avater.thumb50.url %>
+          <%= image_tag post.user.avater.thumb50.url, :size => '70x70' %>
         <% else %>
-          <%= image_tag"/assets/default.jpg", :size => '100x100' %>
+          <%= image_tag"/assets/default.jpg", :size => '70x70' %>
         <% end %>
         <figcaption>
           <%=link_to(post.user.name, user_path(post.user_id))%>
         </figcaption>
       </figure>
       <div class="media-body", style="word-break: break-all;">
-        <h5 class="mt-0 text-left"><%= link_to(post.content, post_path(post))%></h5>
         <p class="text-left"> 投稿日時：<%= post.created_at.strftime('%Y年%m月%d日') %> </p>
+        <h5 class="mt-0 text-left"><%= link_to(post.content, post_path(post))%></h5>
+        <% if post.picture? %>
+          <% post.picture.each do |picture| %>
+            <li><%= image_tag picture.thumb.url, :size => '70x70' %></li>
+          <% end %>
+        <% end %>
       </div><!-- /.media-body -->
     </div><!-- /.media -->
   <% end %>

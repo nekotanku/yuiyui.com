@@ -2,7 +2,7 @@
   <div class="media border-bottom">
     <figure class="align-self-start mr-3">
       <% if user.avater? %>
-        <%= image_tag user.avater.thumb50.url %>
+        <%= image_tag user.avater.thumb50.url, :size => '100x100' %>
       <% else %>
         <%= image_tag"/assets/default.jpg", :size => '100x100' %>
       <% end %>
