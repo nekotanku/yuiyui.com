@@ -1,9 +1,9 @@
 <div class="container userPage" id="wrapper">
   <div class="row">
     <aside class="col-md-3">
-      <div class="profile-avatar border">
+      <div class="profile-avatar">
         <% if @user.avater? %>
-          <%= image_tag @user.avater.thumb.url %>
+          <%= image_tag @user.avater.thumb.url, :size => '200x200' %>
         <% else %>
           <%= image_tag"/assets/default.jpg", :size => '200x200' %>
         <% end %>
