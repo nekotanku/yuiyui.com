@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       else
         forget(@user)
       end
-      redirect_to @user
+      redirect_to posts_path
     else
       flash.now[:danger] = 'ログインに失敗しました。'
       render 'new'
