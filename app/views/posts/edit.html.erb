@@ -23,10 +23,10 @@
             <div>
               <%= f.submit "更新する", class: "btn btn-primary" %>
             </div>
-          <ul class="float-left">
+          <ul class="media-picture float-left">
             <% if @post.picture? %>
               <% @post.picture.each do |picture| %>
-                <li><%= image_tag picture.thumb_big.url %></li>
+                <%= image_tag picture.thumb_big.url %>
               <% end %>
             <% end %>
           </ul>
