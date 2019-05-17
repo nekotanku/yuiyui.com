@@ -4,13 +4,15 @@
 ***DebugAccount:***  
 ログイン画面に、テスト用のアカウントを用意しています。ご利用ください。  
 
-# 製作者(共同)
+# 製作者
 + nekotanku(https://github.com/nekotanku)
     + ***Wantedly:***(https://www.wantedly.com/users/100641104)  
 + Tshi66 (https://github.com/Tshi66)
     + ***Wantedly:***(https://www.wantedly.com/users/99532404)  
 
 # 使用した技術
+  + 開発環境IDE  
+      + aws Cloud9  
   + デプロイ
       + heroku（GitHubと連携した自動デプロイサービスも利用）  
   + Rspec
