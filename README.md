@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/Tshi66/yuiyui.com.svg?style=svg)](https://circleci.com/gh/Tshi66/yuiyui.com)
+
 # yuiyui.com  
 好きなアイドルや声優さんのライブ、グッズ、書籍、CD、DVD、BDなどの  
 感想を写真付きで共有できるサービスです。[ https://yuiyuicom.herokuapp.com/ ]  
@@ -11,10 +13,12 @@
     + ***Wantedly:***(https://www.wantedly.com/users/99532404)  
 
 # 使用した技術
-  + 開発環境IDE  
-      + aws Cloud9  
+  + 開発環境
+      + Docker linux-alpineをベースOSに指定することでコンテナイメージを軽量化
   + デプロイ
-      + heroku（GitHubと連携した自動デプロイサービスも利用）  
+      + heroku （CircleCIを利用し、自動デプロイを可能に） 
+  + CircleCI
+      + maseteブランチにマージされると、CircleCIによりRspecの自動テスト、herokuへの自動コンテナデプロイされます。
   + Rspec
       + 単体テスト
       + 統合テスト  
@@ -22,7 +26,7 @@
       + carrierwave
       + minimagick
   + DB
-      + 開発、テスト環境：sqlite3
+      + 開発、テスト環境：PostgresSQL
       + 本番環境：PostgreSQL
   + ページネーション
       + kaminari
