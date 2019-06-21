@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20190507084123) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
@@ -28,8 +31,8 @@ ActiveRecord::Schema.define(version: 20190507084123) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "follow_id"
+    t.bigint "user_id"
+    t.bigint "follow_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
@@ -49,4 +52,6 @@ ActiveRecord::Schema.define(version: 20190507084123) do
     t.boolean "admin", default: false
   end
 
+  add_foreign_key "relationships", "users"
+  add_foreign_key "relationships", "users", column: "follow_id"
 end
