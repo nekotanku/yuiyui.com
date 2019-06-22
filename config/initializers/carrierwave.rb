@@ -7,6 +7,7 @@ CarrierWave.configure do |config|
     config.storage :fog
     config.fog_provider = 'fog/aws'
     config.fog_directory  = 'yuiyuicom'
+    config.fog_attributes = { 'Cache-Control' => "max-age=#{30.day.to_i}" }
     config.fog_credentials = {
       provider: 'AWS',
       aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
