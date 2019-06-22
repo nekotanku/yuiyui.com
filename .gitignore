@@ -25,3 +25,6 @@
 # Ignore uploaded files in development
 /public/uploads/
 /public/uploads_test/
+
+#aws関連の環境変数を除外
+/.env
