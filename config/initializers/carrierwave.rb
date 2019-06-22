@@ -6,9 +6,16 @@ CarrierWave.configure do |config|
     aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
     region: ENV['AWS_REGION'],
   }
+  case Rails.env
+    when 'production'
+      config.fog_directory = 's3-yuiyuicom'
 
-  config.fog_directory = 'yuiyuicom'
+    when 'development'
+      config.fog_directory = 'dev-s3-yuiyuicom'
+
+    when 'test'
+      config.fog_directory = 'dev-s3-yuiyuicom'
+  end
 end
 
-# 日本語ファイル名の設定
 CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
