@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature "Users", type: :feature do
   given(:user) { FactoryBot.create(:yuri) }
   given(:other_user){ FactoryBot.create(:taro) }
+  given(:image_path) { File.join(Rails.root, 'spec/fixtures/test.png') }
 
   scenario '新しいユーザーを作成できること' do
     visit "/"
@@ -29,7 +30,7 @@ RSpec.feature "Users", type: :feature do
       expect(page).to have_content "初めまして"
     end
     scenario 'アバターを編集できること' do
-      attach_file "user[avater]", "#{Rails.root}/spec/fixtures/test.png"
+      attach_file "user[avater]", image_path
       click_on "更新する"
       expect(page).to have_content "プロフィールを編集しました"
     end
