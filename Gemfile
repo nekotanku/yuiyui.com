@@ -36,6 +36,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 #画像リサイズ
 gem 'mini_magick'
+#AWS s3
+gem 'fog-aws'
 gem 'kaminari'
 
 group :development, :test do
