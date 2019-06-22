@@ -4,15 +4,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   process resize_to_limit: [300, 300]
 
-  def size_range
-    1..5.megabytes
-  end
-
-  if Rails.env.production? || Rails.env.staging?
-    storage :fog
-  else
-    storage :file
-  end
+  storage :fog
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -27,6 +19,10 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   def extension_whitelist
     %w(jpg jpeg gif png)
+  end
+
+  def size_range
+    1..5.megabytes
   end
 
   def filename
