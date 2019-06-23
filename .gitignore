@@ -28,3 +28,5 @@
 
 #aws関連の環境変数を除外
 /.env
+
+/config/secrets.yml

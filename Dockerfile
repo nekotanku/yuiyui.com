@@ -3,7 +3,9 @@ FROM ruby:2.5.3-alpine
 ENV RUNTIME_PACKAGES="linux-headers libxml2-dev libxslt-dev make gcc libc-dev \
   nodejs imagemagick-dev=6.9.6.8-r1 imagemagick=6.9.6.8-r1 tzdata postgresql-dev postgresql" \
   DEV_PACKAGES="build-base curl-dev" \
-  HOME="/yuiyui.com"
+  HOME="/yuiyui.com" \
+  RAILS_ENV=production \
+  RACK_ENV=production
 
 WORKDIR $HOME
 
