@@ -13,10 +13,6 @@ services:
       - .:/yuiyui.com
     env_file:
       - ~/.env
-    environment:
-      POSTGRES_HOST: db
-      RAILS_ENV: development
-      RACK_ENV: develobpment
     ports:
       - "3000:3000"
     depends_on:
