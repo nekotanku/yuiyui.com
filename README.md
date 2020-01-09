@@ -1,10 +1,16 @@
 [![CircleCI](https://circleci.com/gh/Tshi66/yuiyui.com.svg?style=svg)](https://circleci.com/gh/Tshi66/yuiyui.com)
 
 # yuiyui.com  
+
+（2020/01/10更新）
+！！！過去作品のため、現在デプロイをしていません！！！
+ソースコードなどで、開発経験をご確認いただければ幸いです。
+こちらのポートフォリオは参考程度に、ご参照ください。
+よろしくお願いいたします。
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 好きなアイドルや声優さんのライブ、グッズ、書籍、CD、DVD、BDなどの  
-感想を写真付きで共有できるサービスです。[ https://yuiyuicom.herokuapp.com/ ]  
-***DebugAccount:***  
-ログイン画面に、テスト用のアカウントを用意しています。ご利用ください。  
+感想を写真付きで共有できるサービスです。[ https://yuiyuicom.herokuapp.com/ ]    
 
 # 製作者
 + nekotanku(https://github.com/nekotanku)
